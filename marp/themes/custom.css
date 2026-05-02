@@ -1,0 +1,114 @@
+/* @theme custom */
+/*
+  custom — Miura's Marp theme
+  - ベース: default
+  - 配色: 青系（強アクセント #4488cc / 落ち着き #5e80ad / 濃紺見出し #224466）
+  - 強調ルール: strong=青文字 / em=青マーカー（斜体やめ）
+  - 表紙: section.title をベタ塗り＋Flex で中央寄せ
+*/
+
+@import "default";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+
+:root {
+  --color-accent: #4488cc;
+  --color-accent-soft: #4488cc25;
+  --color-primary: #5e80ad;
+  --color-heading: #224466;
+  --color-text: #656d76;
+  --background-theme: #eef3f8;
+}
+
+/* ===== 共通 ===== */
+section {
+  color: var(--color-text);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  line-height: 1.7;
+  padding-bottom: 1em;
+}
+
+h1, h2 { color: var(--color-heading); }
+
+strong { color: var(--color-accent); }
+
+em {
+  font-style: normal;          /* 斜体をやめて */
+  font-weight: bold;            /* 太字＋ */
+  background-color: var(--color-accent-soft);  /* 青マーカー */
+}
+
+/* 数式（MathJax） */
+section mjx-container { color: var(--color-primary); }
+
+/* テーブル */
+section table { margin: 10px auto; }
+section table td { text-align: center; }
+section table td img { display: block; margin: 0 auto; }
+section table th { background-color: var(--background-theme); }
+
+/* ヘッダ（セクション見出し風の下線） */
+header {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* ===== 表紙（_class: title）===== */
+section.title {
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.title h1 { color: white; font-size: 2.2em; margin: 0.2em 0; }
+section.title h2,
+section.title h3,
+section.title h6 { color: white; margin: 0.2em 0; }
+
+section.title strong { color: white; }   /* 表紙では青→白に上書き */
+section.title em {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+section.title footer { color: var(--color-primary); }
+
+/* ===== 多段組みレイアウト（FlexBox）===== */
+:root { --fw: 1; }
+
+.flex { display: flex; gap: 1em; }
+.flex.sa { justify-content: space-around; }
+.flex.sb { justify-content: space-between; }
+.flex.sa > div,
+.flex.sb > div { margin: 0.1em; }
+.flex.fw > div { flex: var(--fw); }
+
+/* ===== 任意文字色プリセット ===== */
+.c-accent  { color: var(--color-accent); }
+.c-primary { color: var(--color-primary); }
+.c-heading { color: var(--color-heading); }
+.c-ok      { color: #2e8b57; }
+.c-warn    { color: #d2691e; }
+.c-ng      { color: #c0392b; }
+.c-mute    { color: #8899aa; }
+
+.h-yellow  { background: #fff3a3; padding: 0 .15em; border-radius: .15em; }
+.h-blue    { background: var(--color-accent-soft); padding: 0 .15em; border-radius: .15em; }
+.h-pink    { background: #ffd7e0; padding: 0 .15em; border-radius: .15em; }
+
+/* ===== フッター引用（フットノート風）===== */
+section footer {
+  font-size: 0.55em;
+  line-height: 1.4;
+  color: #8899aa;
+  text-align: left;
+  padding: 0 10px;
+  white-space: pre-line;
+}

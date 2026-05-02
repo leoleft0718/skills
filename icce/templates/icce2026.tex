@@ -1,0 +1,170 @@
+%% ICCE 2026 Paper Template
+%% Compile with: latexmk -xelatex -biber <filename>.tex
+%% Or manually:  xelatex → biber → xelatex → xelatex
+%%
+%% XeLaTeX is required (Arial font uses fontspec).
+
+\documentclass[11pt,a4paper]{article}
+
+% ==== Font (XeLaTeX required) ====
+\usepackage{fontspec}
+\setmainfont{Arial}[
+  BoldFont      = Arial Bold,
+  ItalicFont    = Arial Italic,
+  BoldItalicFont = Arial Bold Italic,
+]
+
+% ==== Page geometry ====
+\usepackage[
+  a4paper,
+  top=1in,
+  bottom=0.8in,
+  left=1in,
+  right=1in,
+  nohead,
+  nofoot,
+]{geometry}
+
+% ==== Line spacing ====
+\usepackage{setspace}
+\setstretch{1.0}
+
+% ==== Paragraph indent ====
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ==== Section heading formatting ====
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+  {0pt}{2\baselineskip}{\baselineskip}
+
+\titleformat{\subsection}
+  {\normalfont\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}
+  {0pt}{\baselineskip}{\baselineskip}
+
+\titleformat{\subsubsection}
+  {\normalfont\itshape}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}
+  {0pt}{\baselineskip}{\baselineskip}
+
+% ==== Title ====
+\newcommand{\iccetitle}[1]{%
+  \begin{center}
+    {\fontsize{22pt}{26pt}\selectfont\bfseries #1}%
+  \end{center}%
+  \vspace{\baselineskip}%
+}
+
+% ==== Author ====
+\newcommand{\icceauthor}[2]{%
+  \begin{center}
+    #1 \\ {\itshape #2}%
+  \end{center}%
+}
+
+% ==== Abstract ====
+\newenvironment{icceabstract}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{0.5in}%
+    \setlength{\rightmargin}{0.5in}%
+  }%
+  \item[]\small\noindent\textbf{Abstract:}\space
+}{%
+  \end{list}%
+}
+
+% ==== Keywords ====
+\newenvironment{iccekeywords}{%
+  \vspace{\baselineskip}%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{0.5in}%
+    \setlength{\rightmargin}{0.5in}%
+  }%
+  \item[]\small\noindent\textbf{Keywords:}\space
+}{%
+  \end{list}%
+  \vspace{2\baselineskip}%
+}
+
+% ==== Figures and tables ====
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+\captionsetup[figure]{justification=centering, position=below}
+\captionsetup[table]{justification=centering, position=above}
+
+% ==== Bibliography (APA 7th) ====
+\usepackage[style=apa, backend=biber, natbib=true]{biblatex}
+\addbibresource{references.bib}
+
+% ==== Lists ====
+\usepackage{enumitem}
+
+% ==== Bookmarks and accessibility ====
+\usepackage[
+  pdfauthor={},
+  pdftitle={},
+  bookmarks=true,
+  bookmarksopen=true,
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue,
+]{hyperref}
+\usepackage{bookmark}
+
+% ==== No page numbers ====
+\pagestyle{empty}
+
+% ================================================================
+\begin{document}
+
+\vspace{\baselineskip}
+
+\iccetitle{Title of the Paper}
+
+\icceauthor{Shota MIURA, Masanori TAKAGI}%
+  {The University of Electro-Communications, Tokyo, Japan}
+
+\vspace{\baselineskip}
+
+\begin{icceabstract}
+  Write your abstract here. Maximum 350 words.
+  Describe the problem, approach, findings, and conclusions.
+\end{icceabstract}
+
+\begin{iccekeywords}
+  keyword1, keyword2, keyword3
+\end{iccekeywords}
+
+% ================================================================
+
+\section{Introduction}
+
+Write the introduction here.
+
+\section{Related Work}
+
+\section{Method}
+
+\subsection{Design}
+
+\subsection{Implementation}
+
+\section{Experimental Application}
+
+\section{Analysis and Discussion}
+
+\section{Conclusion}
+
+% ==== Acknowledgements (unnumbered) ====
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+% ==== References ====
+\printbibliography[title={References}]
+
+\end{document}
