@@ -95,9 +95,43 @@ marp --theme-set ~/.claude/skills/marp/themes/custom.css --pptx {{SLIDE_FILE}}
 
 `--fw` の数値の比で幅が決まる。`1:1` なら `--fw: 1` / `--fw: 1`。
 
+### 画像＋テキストのレイアウト
+
+```markdown
+<div class="flex fw">
+
+<div style="--fw: 3;">
+
+![キャプション](./image.png)
+
+</div>
+
+<div style="--fw: 2;">
+
+### 見出し
+
+- 説明テキスト
+
+> 補足
+
+</div>
+
+</div>
+```
+
 ---
 
 ## 文字色の使い方
+
+### マーカー（`em` が最も手軽）
+
+```markdown
+*青マーカー*  ← em（太字＋青背景）。最もよく使う強調。
+<span class="h-yellow">黄色マーカー</span>
+<span class="h-pink">ピンクマーカー</span>
+```
+
+重要なキーワード・結論・注意点には必ずマーカーを引く。
 
 ### プリセットクラス（推奨）
 
